@@ -27,6 +27,56 @@
         </div>
     </header>
 
+    <main class="applicationShell" id="applicationShell">
+        <section class="formCard" id="formCard">
+
+            <h2>Step 1: Prove you can handle chaos</h2>
+
+            <p class="instructions">
+                Fill everything in, press the submit button, and try not to personally offend the goose.
+            </p>
+
+
+            <label for="visitorName">Your legal name, according to the goose</label>
+            <input id="visitorName" type="text" placeholder="Type your name before it gets honked">
+
+
+            <label for="visitorEmail">Email for your chaos certificate</label>
+            <input id="visitorEmail" type="email" placeholder="goosefriend@example.com">
+
+
+            <label for="politenessSlider">Goose politeness level: <span id="politenessLabel">50</span>%</label>
+            <input id="politenessSlider" type="range" min="0" max="100" value="50">
+
+
+            <label for="snackSelect">Choose your peace offering snack</label>
+            <select id="snackSelect">
+                <option value="bread">Bread crumbs</option>
+                <option value="lettuce">Crispy lettuce</option>
+                <option value="grapes">Tiny fancy grapes</option>
+                <option value="respect">Respectful distance</option>
+            </select>
+
+
+            <div class="checkboxRow">
+                <input id="termsCheckbox" type="checkbox">
+                <label for="termsCheckbox">I accept that the goose may judge my browser history.</label>
+            </div>
+
+
+            <label for="gooseEssay">Why do you deserve to survive this goose?</label>
+            <textarea id="gooseEssay" rows="4" placeholder="Write something moving. The goose loves drama."></textarea>
+
+
+            <div class="buttonRow">
+                <button id="runawayButton" type="button">Submit Chaos Test</button>
+                <button id="resetChaosButton" type="button">Reset chaos, politely</button>
+            </div>
+
+        </section>
+        
+    </main>
+
 
     <script src="script.js"></script>
 </body>
