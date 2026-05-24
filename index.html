@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3: Misbehaving Interface</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <header class="heroPanel" id="heroPanel">
+        <p class="eyebrow">VISA 2P61 Assignment 3</p>
+        <h1>Goose Chaos Tolerance Test</h1>
+        <p>
+            Welcome to the official Goose Chaos Tolerance Test. Your mission is simple: complete the form and prove how
+            much
+            chaos you can handle from our unlicensed emotional damage goose. Every click, type, and choice will test
+            your patience.
+            Survive the goose, and maybe you are ready for the internet.
+        </p>
+
+        <div class="gooseStage" id="gooseStage" aria-label="A decorative duck and message visualization">
+            <div class="gooseBody">🪿</div>
+            <div class="gooseSpeech" id="gooseSpeech">HONK to begin.</div>
+        </div>
+    </header>
+
+    <main class="applicationShell" id="applicationShell">
+        <section class="formCard" id="formCard">
+
+            <h2>Step 1: Prove you can handle chaos</h2>
+
+            <p class="instructions">
+                Fill everything in, press the submit button, and try not to personally offend the goose.
+            </p>
+
+
+            <label for="visitorName">Your legal name, according to the goose</label>
+            <input id="visitorName" type="text" placeholder="Type your name before it gets honked">
+
+
+            <label for="visitorEmail">Email for your chaos certificate</label>
+            <input id="visitorEmail" type="email" placeholder="goosefriend@example.com">
+
+
+            <label for="politenessSlider">Goose politeness level: <span id="politenessLabel">50</span>%</label>
+            <input id="politenessSlider" type="range" min="0" max="100" value="50">
+
+
+            <label for="snackSelect">Choose your peace offering snack</label>
+            <select id="snackSelect">
+                <option value="bread">Bread crumbs</option>
+                <option value="lettuce">Crispy lettuce</option>
+                <option value="grapes">Tiny fancy grapes</option>
+                <option value="respect">Respectful distance</option>
+            </select>
+
+
+            <div class="checkboxRow">
+                <input id="termsCheckbox" type="checkbox">
+                <label for="termsCheckbox">I accept that the goose may judge my browser history.</label>
+            </div>
+
+
+            <label for="gooseEssay">Why do you deserve to survive this goose?</label>
+            <textarea id="gooseEssay" rows="4" placeholder="Write something moving. The goose loves drama."></textarea>
+
+
+            <div class="buttonRow">
+                <button id="runawayButton" type="button">Submit Chaos Test</button>
+                <button id="resetChaosButton" type="button">Reset chaos, politely</button>
+            </div>
+        </section>
+
+        <aside class="statusPanel" id="statusPanel">
+            <h2>Goose Control Room</h2>
+            <p id="statusMessage">Status: suspiciously calm.</p>
+
+            <div class="meterShell" aria-label="Chaos meter visualization">
+                <div class="chaosMeter" id="chaosMeter"></div>
+            </div>
+
+            <ul id="behaviorLog">
+                <li>Behavior log: no crimes yet.</li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <section class="honkZone" id="honkZone" aria-live="polite">
+        <h2>Live Honk Visualization</h2>
+        <p>Every suspicious interaction may spawn, move, or remove honks.</p>
+    </section>
+
+    <footer class="footerNote">
+        <p>Reload the page to return the goose to its factory settings. Warning: factory settings are still rude.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
