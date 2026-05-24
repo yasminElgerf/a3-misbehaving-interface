@@ -72,10 +72,27 @@
                 <button id="runawayButton" type="button">Submit Chaos Test</button>
                 <button id="resetChaosButton" type="button">Reset chaos, politely</button>
             </div>
-
         </section>
-        
+
+        <aside class="statusPanel" id="statusPanel">
+            <h2>Goose Control Room</h2>
+            <p id="statusMessage">Status: suspiciously calm.</p>
+
+            <div class="meterShell" aria-label="Chaos meter visualization">
+                <div class="chaosMeter" id="chaosMeter"></div>
+            </div>
+
+            <ul id="behaviorLog">
+                <li>Behavior log: no crimes yet.</li>
+            </ul>
+        </aside>
+
     </main>
+
+    <section class="honkZone" id="honkZone" aria-live="polite">
+        <h2>Live Honk Visualization</h2>
+        <p>Every suspicious interaction may spawn, move, or remove honks.</p>
+    </section>
 
 
     <script src="script.js"></script>
