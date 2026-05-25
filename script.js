@@ -21,3 +21,37 @@ let snackChangeCounter = 0;
 let runawayCounter = 0;
 let essayCounter = 0;
 let originalEssayWords = [];
+
+
+/* Utility function: records design-visible events in the page so the misbehavior feels intentional. */
+function addBehaviorLog(messageText) {
+    const newLogItem = document.createElement('li');
+    newLogItem.textContent = messageText;
+    behaviorLog.prepend(newLogItem);
+
+    if (behaviorLog.children.length > 6) {
+        behaviorLog.removeChild(behaviorLog.lastElementChild);
+    }
+}
+
+/* Utility function: makes the duck/goose message jump around the page whenever it changes message. */
+function moveGooseMessage() {
+    gooseStage.classList.add('isFloating');
+
+    const maxLeft = window.innerWidth - 360;
+    const maxTop = window.innerHeight - 160;
+
+    const randomLeft = Math.max(20, Math.floor(Math.random() * maxLeft));
+    const randomTop = Math.max(20, Math.floor(Math.random() * maxTop));
+    const randomRotation = Math.floor(Math.random() * 30) - 15;
+
+    gooseStage.style.left = `${randomLeft}px`;
+    gooseStage.style.top = `${randomTop}px`;
+    gooseStage.style.transform = `rotate(${randomRotation}deg)`;
+}
+
+/* Utility function: changes the bird message and also moves it around as a distraction. */
+function changeGooseMessage(newMessage) {
+    gooseSpeech.textContent = newMessage;
+    moveGooseMessage();
+}
