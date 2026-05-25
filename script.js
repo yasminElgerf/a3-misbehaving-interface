@@ -184,6 +184,31 @@ snackSelect.addEventListener('change', () => {
     updateChaosMeter(10);
 });
 
+//! Behavior 4: checkbox causes unrelated consequences by erasing the email and adding a misleading apology note. Design intention: the visitor expects to accept terms, but the interface punishes them by deleting an unrelated field.
+
+termsCheckbox.addEventListener('change', () => {
+    visitorEmail.value = '';
+
+    if (termsCheckbox.checked) {
+        changeGooseMessage('Terms accepted. Email rejected for emotional reasons.');
+    } else {
+        changeGooseMessage('Terms rejected. Email still gone. The goose is consistent.');
+    }
+
+    const apologyNote = document.createElement('span');
+    apologyNote.className = 'apologyNote';
+    apologyNote.textContent = 'Sorry! Not sorry. The goose needed that email space.';
+
+    honkZone.appendChild(apologyNote); /* DOM addition: creates a fake apology. */
+
+    window.setTimeout(() => {
+        apologyNote.remove(); /* DOM removal: apology disappears, adding temporal misbehavior. */
+    }, 2500);
+
+    addBehaviorLog('Behavior 4 completed: checking the terms erased an unrelated email field.');
+    updateChaosMeter(12);
+});
+
 
 /* Initial setup: makes the page start in a stable state every time it loads. */
 updateChaosMeter(0);
