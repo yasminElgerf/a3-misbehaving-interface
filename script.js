@@ -261,6 +261,26 @@ runawayButton.addEventListener('click', () => {
     updateChaosMeter(15);
 });
 
+/* Extra behavior complete: the essay words rearrange themselves while the visitor types. Design intention: the visitor tries to explain themselves clearly, but the interface destroys the sentence order and makes their writing feel unstable. */
+gooseEssay.addEventListener('input', () => {
+    essayCounter += 1;
+
+    originalEssayWords = gooseEssay.value.split(/\s+/).filter((word) => word.length > 0);
+
+    if (essayCounter % 12 === 0 && originalEssayWords.length >= 5) {
+        scrambleEssayWords();
+
+        changeGooseMessage('Beautiful essay. The goose reorganized it using ancient nonsense logic.');
+
+        spawnHonkBadge('essay scrambled');
+
+        addBehaviorLog('Extra behavior completed: the essay words rearranged themselves while the visitor typed.');
+        
+        updateChaosMeter(7);
+    }
+});
+
+
 /* Initial setup: makes the page start in a stable state every time it loads. */
 updateChaosMeter(0);
 addBehaviorLog('Page loaded cleanly: the Goose Chaos Tolerance Test is ready.');
