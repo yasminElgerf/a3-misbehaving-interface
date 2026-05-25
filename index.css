@@ -68,3 +68,64 @@ h1 {
     background: #ffffff;
     font-weight: 800;
 }
+
+/* Application shell: puts the form and status panel side by side. */
+.applicationShell {
+    width: min(1100px, 92vw);
+    margin: 24px auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: 22px;
+}
+
+/* !Borders for the formCard, the status panel and honk zone just to keep the actual interface readable while still letting it misbehaving */
+
+.formCard {
+    padding: 24px;
+    border: 3px solid #172033;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 8px 8px 0 #172033;
+}
+
+.statusPanel {
+    padding: 24px;
+    border: 3px solid #172033;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 8px 8px 0 #172033;
+}
+
+.honkZone {
+    padding: 24px;
+    border: 3px solid #172033;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 8px 8px 0 #172033;
+}
+
+/* Instructions: The paragraph under step 1. it gives a clear user goal so frustration feels intentional, not accidental. */
+.instructions {
+    font-weight: 700;
+}
+
+/* Form labels: (Name, Email, etc) */
+label {
+    display: block;
+    margin: 18px 0 7px;
+    font-weight: 800;
+}
+
+/* UI element styling: applies consistent design to all inputs, select menus, and text areas. */
+input[type="text"],
+input[type="email"],
+input[type="range"],
+select,
+textarea{
+    width: 100%;
+    border: 2px solid #172033;
+    border-radius: 14px;
+    padding: 12px;
+    font: inherit;
+    background: #fffdf6;
+}
