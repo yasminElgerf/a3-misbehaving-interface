@@ -325,3 +325,5 @@ addBehaviorLog('Page loaded cleanly: the Goose Chaos Tolerance Test is ready.');
 
 /* Discarded experiment: I first tried to move the entire form on every mousemove, but it made the page too annoying to test. */
 /* document.addEventListener('mousemove', () => { document.body.style.rotate = '1deg'; }); */ 
+
+// ! Final project note: all chaos is generated during the session only, so refreshing the browser returns the interface to a clean starting state. 
