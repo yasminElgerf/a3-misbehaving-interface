@@ -84,6 +84,24 @@ function spawnHonkBadge(labelText) {
 }
 
 
+// ! Behavior 1: name input fights back by partially rewriting the user's name into goose language. The user tries to type normally, but the interface interrupts it by adding a random HONK to the name and it can not be erased.
+
+visitorName.addEventListener('input', () => {
+    nameEditCounter += 1;
+
+    if (nameEditCounter % 3 === 0 && visitorName.value.length > 1) {
+        visitorName.value = `${visitorName.value.slice(0, 2)}-HONK-${nameEditCounter}`;
+
+        changeGooseMessage('Your name has been improved by the Chaos Department. You are welcome.');
+
+        spawnHonkBadge('identity honk');
+
+        addBehaviorLog('Behavior 1 completed: the name field rewrote the visitor identity into goose language.');
+        
+        updateChaosMeter(9);
+    }
+});
+
 
 /* Initial setup: makes the page start in a stable state every time it loads. */
 updateChaosMeter(0);
