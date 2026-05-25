@@ -115,6 +115,27 @@ function showSnackWarning(messageText) {
 }
 
 
+/* Utility function: rearranges words so the essay becomes grammatically chaotic. */
+function scrambleEssayWords() {
+    const currentWords = gooseEssay.value.split(/\s+/).filter((word) => word.length > 0);
+
+    if (currentWords.length < 5) {
+        return;
+    }
+
+    const scrambledWords = [...currentWords];
+
+    for (let currentIndex = scrambledWords.length - 1; currentIndex > 0; currentIndex -= 1) {
+        const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
+        const temporaryWord = scrambledWords[currentIndex];
+        scrambledWords[currentIndex] = scrambledWords[randomIndex];
+        scrambledWords[randomIndex] = temporaryWord;
+    }
+
+    gooseEssay.value = scrambledWords.join(' ');
+}
+
+
 // ! Behavior 1: name input fights back by partially rewriting the user's name into goose language. The user tries to type normally, but the interface interrupts it by adding a random HONK to the name and it can not be erased.
 
 visitorName.addEventListener('input', () => {
