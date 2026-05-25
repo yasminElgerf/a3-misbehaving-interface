@@ -23,6 +23,21 @@ let essayCounter = 0;
 let originalEssayWords = [];
 
 
+// Random snack list: every menu interaction adds a new ridiculous option.
+const rejectedSnackOptions = [
+    'Forbidden snack: one left sock',
+    'Premium snack: emotional support crouton',
+    'Suspicious snack: wet calculator',
+    'Luxury snack: unpaid parking ticket',
+    'Royal snack: glitter-covered lettuce',
+    'Illegal snack: borrowed Wi-Fi password',
+    'Mystery snack: crunchy keyboard crumbs',
+    'Fancy snack: one dramatic grape',
+    'Emergency snack: tiny traffic cone',
+    'Academic snack: overdue assignment'
+];
+
+
 /* Utility function: records design-visible events in the page so the misbehavior feels intentional. */
 function addBehaviorLog(messageText) {
     const newLogItem = document.createElement('li');
