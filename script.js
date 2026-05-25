@@ -210,6 +210,36 @@ termsCheckbox.addEventListener('change', () => {
 });
 
 
+// ! Behavior 5 : the main submit button runs away on hover and becomes harder to click. Intention: the most important button avoids the visitor, turning a normal form submission into a chase.
+
+runawayButton.addEventListener('mouseenter', () => {
+    runawayCounter += 1;
+
+    const horizontalJump = Math.floor(Math.random() * 180) - 90;
+    const verticalJump = Math.floor(Math.random() * 100) - 50;
+    const shrinkAmount = Math.max(0.68, 1 - runawayCounter * 0.04);
+
+    runawayButton.style.transform = `translate(${horizontalJump}px, ${verticalJump}px) scale(${shrinkAmount})`;
+    runawayButton.style.opacity = `${Math.max(0.55, 1 - runawayCounter * 0.05)}`;
+
+    changeGooseMessage('The submit button has entered witness protection.');
+
+    spawnHonkBadge('runaway submit');
+    addBehaviorLog('Behavior 5 completed: the important button dodged the cursor.');
+    updateChaosMeter(10);
+});
+
+/* Submit click: rewards persistence with funny feedback and more DOM visualization. */
+runawayButton.addEventListener('click', () => {
+    changeGooseMessage('Application submitted! Maybe. The goose is reading it upside down.');
+
+    spawnHonkBadge('SUBMITTED?');
+    spawnHonkBadge('probably not');
+
+    addBehaviorLog('The visitor clicked submit despite goose interference. Spectatorial mastery briefly restored, then questioned.');
+    updateChaosMeter(15);
+});
+
 /* Initial setup: makes the page start in a stable state every time it loads. */
 updateChaosMeter(0);
 addBehaviorLog('Page loaded cleanly: the Goose Chaos Tolerance Test is ready.');
