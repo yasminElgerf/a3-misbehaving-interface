@@ -82,3 +82,12 @@ function spawnHonkBadge(labelText) {
         firstBadge.remove(); /* DOM removal 1+: old badges are removed to keep the page from breaking. */
     }
 }
+
+
+
+/* Initial setup: makes the page start in a stable state every time it loads. */
+updateChaosMeter(0);
+addBehaviorLog('Page loaded cleanly: the Goose Chaos Tolerance Test is ready.');
+
+/* Discarded experiment: I first tried to move the entire form on every mousemove, but it made the page too annoying to test. */
+/* document.addEventListener('mousemove', () => { document.body.style.rotate = '1deg'; }); */ 
