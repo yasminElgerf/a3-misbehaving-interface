@@ -99,6 +99,22 @@ function spawnHonkBadge(labelText) {
 }
 
 
+/* Utility function: shows a snack rejection message below the snack menu. */
+function showSnackWarning(messageText) {
+    const oldWarning = document.querySelector('.snackWarning');
+
+    if (oldWarning !== null) {
+        oldWarning.remove();
+    }
+
+    const snackWarning = document.createElement('p');
+    snackWarning.className = 'snackWarning';
+    snackWarning.textContent = messageText;
+
+    snackSelect.insertAdjacentElement('afterend', snackWarning);
+}
+
+
 // ! Behavior 1: name input fights back by partially rewriting the user's name into goose language. The user tries to type normally, but the interface interrupts it by adding a random HONK to the name and it can not be erased.
 
 visitorName.addEventListener('input', () => {
