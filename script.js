@@ -23,6 +23,21 @@ let essayCounter = 0;
 let originalEssayWords = [];
 
 
+// Random snack list: every menu interaction adds a new ridiculous option.
+const rejectedSnackOptions = [
+    'Forbidden snack: one left sock',
+    'Premium snack: emotional support crouton',
+    'Suspicious snack: wet calculator',
+    'Luxury snack: unpaid parking ticket',
+    'Royal snack: glitter-covered lettuce',
+    'Illegal snack: borrowed Wi-Fi password',
+    'Mystery snack: crunchy keyboard crumbs',
+    'Fancy snack: one dramatic grape',
+    'Emergency snack: tiny traffic cone',
+    'Academic snack: overdue assignment'
+];
+
+
 /* Utility function: records design-visible events in the page so the misbehavior feels intentional. */
 function addBehaviorLog(messageText) {
     const newLogItem = document.createElement('li');
@@ -84,6 +99,22 @@ function spawnHonkBadge(labelText) {
 }
 
 
+/* Utility function: shows a snack rejection message below the snack menu. */
+function showSnackWarning(messageText) {
+    const oldWarning = document.querySelector('.snackWarning');
+
+    if (oldWarning !== null) {
+        oldWarning.remove();
+    }
+
+    const snackWarning = document.createElement('p');
+    snackWarning.className = 'snackWarning';
+    snackWarning.textContent = messageText;
+
+    snackSelect.insertAdjacentElement('afterend', snackWarning);
+}
+
+
 // ! Behavior 1: name input fights back by partially rewriting the user's name into goose language. The user tries to type normally, but the interface interrupts it by adding a random HONK to the name and it can not be erased.
 
 visitorName.addEventListener('input', () => {
@@ -126,6 +157,31 @@ politenessSlider.addEventListener('input', () => {
     addBehaviorLog('Behavior 2 completed: the politeness slider dramatically tilted the whole page.');
 
     updateChaosMeter(8);
+});
+
+// ! Behavior 3: snack menu rejects the selected snack, then adds a new random weird option. Intention: the visitor is forced to reopen the menu because every choice becomes unacceptable and the menu keeps mutating.
+
+snackSelect.addEventListener('change', () => {
+    snackChangeCounter += 1;
+
+    const selectedSnackText = snackSelect.options[snackSelect.selectedIndex].textContent;
+    const randomSnackIndex = Math.floor(Math.random() * rejectedSnackOptions.length);
+    const randomSnackText = `${rejectedSnackOptions[randomSnackIndex]} #${snackChangeCounter}`;
+
+    const confusingOption = document.createElement('option');
+    confusingOption.value = `chaosSnack${snackChangeCounter}`;
+    confusingOption.textContent = randomSnackText;
+
+    snackSelect.appendChild(confusingOption); /* DOM addition: menu grows after choices. */
+
+    showSnackWarning(`Joke's on you. The goose does not accept "${selectedSnackText}". Choose again, brave victim.`);
+
+    snackSelect.selectedIndex = 0;
+
+    changeGooseMessage('Snack rejected. The goose has added a worse option to the menu.');
+    spawnHonkBadge('snack denied');
+    addBehaviorLog('Behavior 3 completed: the snack menu rejected the choice and added a new random option.');
+    updateChaosMeter(10);
 });
 
 
