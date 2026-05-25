@@ -159,6 +159,31 @@ politenessSlider.addEventListener('input', () => {
     updateChaosMeter(8);
 });
 
+// ! Behavior 3: snack menu rejects the selected snack, then adds a new random weird option. Intention: the visitor is forced to reopen the menu because every choice becomes unacceptable and the menu keeps mutating.
+
+snackSelect.addEventListener('change', () => {
+    snackChangeCounter += 1;
+
+    const selectedSnackText = snackSelect.options[snackSelect.selectedIndex].textContent;
+    const randomSnackIndex = Math.floor(Math.random() * rejectedSnackOptions.length);
+    const randomSnackText = `${rejectedSnackOptions[randomSnackIndex]} #${snackChangeCounter}`;
+
+    const confusingOption = document.createElement('option');
+    confusingOption.value = `chaosSnack${snackChangeCounter}`;
+    confusingOption.textContent = randomSnackText;
+
+    snackSelect.appendChild(confusingOption); /* DOM addition: menu grows after choices. */
+
+    showSnackWarning(`Joke's on you. The goose does not accept "${selectedSnackText}". Choose again, brave victim.`);
+
+    snackSelect.selectedIndex = 0;
+
+    changeGooseMessage('Snack rejected. The goose has added a worse option to the menu.');
+    spawnHonkBadge('snack denied');
+    addBehaviorLog('Behavior 3 completed: the snack menu rejected the choice and added a new random option.');
+    updateChaosMeter(10);
+});
+
 
 /* Initial setup: makes the page start in a stable state every time it loads. */
 updateChaosMeter(0);
