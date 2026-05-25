@@ -280,6 +280,44 @@ gooseEssay.addEventListener('input', () => {
     }
 });
 
+// ! Reset button: restores visible chaos without saving anything, helping prove reload/reset cleanliness. 
+
+resetChaosButton.addEventListener('click', () => {
+    chaosLevel = 10;
+    runawayCounter = 0;
+    essayCounter = 0;
+    snackChangeCounter = 0;
+    originalEssayWords = [];
+
+    document.body.style.transform = 'none';
+    document.body.style.filter = 'none';
+    document.body.style.letterSpacing = 'normal';
+
+    gooseStage.classList.remove('isFloating');
+    gooseStage.style.left = 'auto';
+    gooseStage.style.top = 'auto';
+    gooseStage.style.transform = 'none';
+
+    runawayButton.style.transform = 'none';
+    runawayButton.style.opacity = '1';
+
+    politenessSlider.value = 50;
+    politenessLabel.textContent = '50';
+    visitorName.value = '';
+    visitorEmail.value = '';
+    gooseEssay.value = '';
+    termsCheckbox.checked = false;
+    snackSelect.selectedIndex = 0;
+
+    gooseSpeech.textContent = 'Chaos reset. Goose remains legally ungovernable.';
+
+    document.querySelectorAll('.honkBadge, .apologyNote, .snackWarning').forEach((chaosElement) => {
+        chaosElement.remove(); /* DOM removal: reset clears generated objects. */
+    });
+
+    addBehaviorLog('Reset completed: visible generated chaos was removed without persistent state.');
+    updateChaosMeter(0);
+});
 
 /* Initial setup: makes the page start in a stable state every time it loads. */
 updateChaosMeter(0);
