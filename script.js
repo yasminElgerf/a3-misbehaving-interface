@@ -55,3 +55,30 @@ function changeGooseMessage(newMessage) {
     gooseSpeech.textContent = newMessage;
     moveGooseMessage();
 }
+
+/* Utility function: updates the chaos meter and dynamically changes CSS properties through JavaScript. */
+function updateChaosMeter(amountChanged) {
+    chaosLevel = Math.max(0, Math.min(100, chaosLevel + amountChanged));
+
+    chaosMeter.style.width = `${chaosLevel}%`; /* Dynamic CSS change 1: width. */
+    document.body.style.letterSpacing = `${chaosLevel / 150}px`; /* Dynamic CSS change 2: letter spacing. */
+
+    if (chaosLevel > 70) {
+        document.body.style.filter = 'saturate(1.6) contrast(1.15)'; /* Dynamic CSS change 3: filter. */
+    } else {
+        document.body.style.filter = 'none';
+    }
+}
+
+/* Utility function: adds a generated badge to the DOM, then sometimes removes an older one. */
+function spawnHonkBadge(labelText) {
+    const honkBadge = document.createElement('span');
+    honkBadge.className = 'honkBadge';
+    honkBadge.textContent = labelText;
+    honkZone.appendChild(honkBadge); /* DOM addition 1+: badges are added as the user interacts. */
+
+    if (honkZone.querySelectorAll('.honkBadge').length > 9) {
+        const firstBadge = honkZone.querySelector('.honkBadge');
+        firstBadge.remove(); /* DOM removal 1+: old badges are removed to keep the page from breaking. */
+    }
+}
