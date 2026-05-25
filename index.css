@@ -1,0 +1,70 @@
+/* Overall page style: creates a playful, polished visual world for the misbehaving test interface. */
+* {
+    box-sizing: border-box;
+}
+
+/* Body block: sets the main color palette, typography, and background visualization. */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 231, 112, 0.55), transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(102, 214, 255, 0.45), transparent 30%),
+        linear-gradient(135deg, #fff8db 0%, #e7f8ff 45%, #ffe4ef 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transform-origin: center top;
+}
+
+/* Hero panel: introduces the concept and motivates users to interact with the frustrating form. */
+.heroPanel {
+    width: min(1100px, 92vw);
+    margin: 28px auto 18px;
+    padding: 34px;
+    border: 3px solid #172033;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 12px 12px 0 #172033;
+}
+
+/* Eyebrow text: adds assignment context without dominating the heading. */
+.eyebrow {
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* Main heading: uses exaggerated scale for a funny official-test feeling. */
+h1 {
+    margin: 10px 0;
+    font-size: clamp(2.2rem, 8vw, 5rem);
+    line-height: 0.95;
+}
+
+/* Goose visualization stage: makes the page feel animated even before interaction begins. */
+.gooseStage {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+/* The Goose body: decorative character that shifts when JavaScript changes the mood.*/
+.gooseBody {
+    font-size: 5rem;
+    filter: drop-shadow(6px 6px 0 rgba(23, 32, 51, 0.25));
+    transition: transform 0.3s ease;
+}
+
+/* Speech bubble: the container besides the goose that shows contradictory feedback from JavaScript. */
+.gooseSpeech {
+    max-width: 520px;
+    padding: 16px 18px;
+    border: 2px solid #172033;
+    border-radius: 18px;
+    background: #ffffff;
+    font-weight: 800;
+}
