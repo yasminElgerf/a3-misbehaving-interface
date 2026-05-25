@@ -97,20 +97,21 @@ visitorName.addEventListener('input', () => {
         spawnHonkBadge('identity honk');
 
         addBehaviorLog('Behavior 1 completed: the name field rewrote the visitor identity into goose language.');
-    
+
         updateChaosMeter(9);
     }
 });
 
 
-// ! Behavior 2 */
+// ! Behavior 2: the politeness slider dramatically tilts the whole page instead of politely adjusting anything. Intention: The slider promises politeness control but actually disrupts the visitor's visual control of the page.
+
 politenessSlider.addEventListener('input', () => {
     const sliderValue = Number(politenessSlider.value);
     politenessLabel.textContent = sliderValue;
 
-const dramaticTilt = (sliderValue - 50) / 2.8;
+    const dramaticTilt = (sliderValue - 50) / 2.8;
 
-document.body.style.transform = `rotate(${dramaticTilt}deg) scale(${1 + Math.abs(dramaticTilt) / 140})`;
+    document.body.style.transform = `rotate(${dramaticTilt}deg) scale(${1 + Math.abs(dramaticTilt) / 140})`;
 
     if (sliderValue > 70) {
         changeGooseMessage('Too polite. The goose suspects you are hiding bread.');
@@ -120,9 +121,11 @@ document.body.style.transform = `rotate(${dramaticTilt}deg) scale(${1 + Math.abs
         changeGooseMessage('Average politeness detected. Boring. Increasing chaos anyway.');
     }
 
-spawnHonkBadge(`tilt ${Math.round(dramaticTilt)}°`);
-addBehaviorLog('Behavior 2 completed: the politeness slider dramatically tilted the whole page.');
-updateChaosMeter(8);
+    spawnHonkBadge(`tilt ${Math.round(dramaticTilt)}°`);
+
+    addBehaviorLog('Behavior 2 completed: the politeness slider dramatically tilted the whole page.');
+
+    updateChaosMeter(8);
 });
 
 
